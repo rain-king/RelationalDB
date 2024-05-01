@@ -34,13 +34,26 @@ SERVICE_NAME=$($PSQL "select name from services where service_id = $SERVICE_ID_S
 
 echo -e "\nWhat's your phone number?"
 read CUSTOMER_PHONE
-# TODO: loop until CUSTOMER_PHONE isn't empty
+
+while [[ -z $CUSTOMER_PHONE ]]
+do
+    echo -e "\nEnter a phone number:"
+    read CUSTOMER_PHONE
+done
+
 CUSTOMER_NAME=$($PSQL "select name from customers where phone = '$CUSTOMER_PHONE';")
+
 if [[ -z $CUSTOMER_NAME ]]
 then
     echo -e "\nI don't have a record for that phone number, what's your name?"
     read CUSTOMER_NAME
-    # TODO: loop until CUSTOMER_NAME isn't empty
+
+    while [[ -z $CUSTOMER_NAME ]]
+    do
+        echo -e "\nPlease enter a name:"
+        read CUSTOMER_NAME
+    done
+
     INSERT_PHONE_RESULT=$($PSQL "insert into customers (name, phone) values ('$CUSTOMER_NAME', '$CUSTOMER_PHONE');")
 fi
 
@@ -49,5 +62,11 @@ CUSTOMER_ID=$($PSQL "select customer_id from customers where phone = '$CUSTOMER_
 echo -e "\nWhat time would you like your $SERVICE_NAME, $CUSTOMER_NAME?"
 read SERVICE_TIME
 # TODO: loop until SERVICE_TIME isn't empty
+while [[ -z $SERVICE_TIME ]]
+do
+    echo -e "\nPlease enter a time for your $SERVICE_NAME:"
+    read SERVICE_TIME
+done
+
 INSERT_APPOINTMENT_RESULT=$($PSQL "insert into appointments (time, customer_id, service_id) values ('$SERVICE_TIME', $CUSTOMER_ID, $SERVICE_ID_SELECTED);")
 echo -e "\nI have put you down for a $SERVICE_NAME at $SERVICE_TIME, $CUSTOMER_NAME."
