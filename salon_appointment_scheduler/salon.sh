@@ -61,7 +61,7 @@ CUSTOMER_ID=$($PSQL "select customer_id from customers where phone = '$CUSTOMER_
 
 echo -e "\nWhat time would you like your $SERVICE_NAME, $CUSTOMER_NAME?"
 read SERVICE_TIME
-# TODO: loop until SERVICE_TIME isn't empty
+
 while [[ -z $SERVICE_TIME ]]
 do
     echo -e "\nPlease enter a time for your $SERVICE_NAME:"
