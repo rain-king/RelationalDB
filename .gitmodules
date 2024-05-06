@@ -1,0 +1,15 @@
+[submodule "PeriodicTableDatabase"]
+	path = PeriodicTableDatabase
+	url = git@github.com:rain-king/PeriodicTableDatabase.git
+[submodule "worldcup_database"]
+	path = worldcup_database
+	url = git@github.com:rain-king/worldcup_database.git
+[submodule "salon_appointment_scheduler"]
+	path = salon_appointment_scheduler
+	url = git@github.com:rain-king/salon_appointment_scheduler.git
+[submodule "number_guess"]
+	path = number_guess
+	url = git@github.com:rain-king/number_guess.git
+[submodule "celestial_bodies_database"]
+	path = celestial_bodies_database
+	url = git@github.com:rain-king/celestial_bodies_database.git
